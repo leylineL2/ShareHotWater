@@ -7,7 +7,7 @@ import datetime
 APIEndPoint = "https://slack.com/api/reminders.add"
 legacyToken = os.environ["Token"]
 delayMinute = os.environ["DelayMinute"]
-postChannel = ["PostChannel"]
+postChannel = os.environ["PostChannel"]
 
 def lambda_handler(event,context):
     # リマインダーをセットする時間を計算 
