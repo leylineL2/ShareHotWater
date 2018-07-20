@@ -16,10 +16,10 @@ Resources:
             Code: ./lambda_function.py
             Environment:
                 Variables:
-                    Token: xoxp-xxxxxxxxxxxxxxxxxxxxx
+                    UserToken: xoxp-xxxxxxxxxxxxxxx
+                    BotToken: xoxb-xxxxxxxxxxxxxxx
                     DelayMinute: 5
-                    PostChannel: Cxxxxxxxx
-            FunctionName: ShareHotWater
+                    PostChannel: CXXXXXXXX
             Handler: lambda_function.lambda_handler
             Role: !GetAtt ShareHotWaterRole.Arn
             Runtime: python3.6
