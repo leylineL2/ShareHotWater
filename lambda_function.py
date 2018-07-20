@@ -32,7 +32,10 @@ def lambda_handler(event,context):
         else: clickType = "buttonClicked is none"
     else:
          clickType = "event is none"
-    postClass = SlackRemind()
+    if clickType is "Double" :
+        postClass = SlackPost()
+    else :
+        postClass = SlackPost()
     # HTTPリクエストするためのパラメータを設定
     method = "POST"
     headers = {"Content-Type" : "application/x-www-form-urlencoded"}
