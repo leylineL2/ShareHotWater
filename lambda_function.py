@@ -32,19 +32,25 @@ def lambda_handler(event,context):
         else: clickType = "buttonClicked is none"
     else:
          clickType = "event is none"
-    if clickType is "Double" :
-        postClass = SlackPost()
+    
+    # 押したボタンの種類を判定して実行結果を決める
+    if clickType == "DOUBLE" :
+        postType = SlackPost()
+    elif clickType == "LONG" :
+        postType = SlackPost()
     else :
-        postClass = SlackPost()
+        postType = SlackRemind()
+
     # HTTPリクエストするためのパラメータを設定
     method = "POST"
     headers = {"Content-Type" : "application/x-www-form-urlencoded"}
-    payloadResult = postClass.CleatePayload()
+    payloadResult = postType.CleatePayload()
+
     # payloadをURLencode形式に変更
     p = "?" + urllib.parse.urlencode(payloadResult)
     
     # HTTPリクエストを準備してPOST 
-    request = urllib.request.Request(postClass.EndPoint+p, method=method, headers=headers)
+    request = urllib.request.Request(postType.EndPoint+p, method=method, headers=headers)
     with urllib.request.urlopen(request) as response:
         response_body = response.read().decode("utf-8")
         print(response_body)
